@@ -1,0 +1,58 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/functions.scss";
+@import "../../../../styles/mixins.scss";
+
+.displayCountries__container {
+	padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+	border-radius: 1.5rem;
+	margin-bottom: 1rem;
+	max-width: 460px;
+
+	& h2 {
+		@include funny-h3;
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		text-decoration: none;
+		text-shadow: 2px 2px 0 $background-dark-color-40;
+		font-weight: 900;
+	}
+	&__country {
+		border: 1px solid $primary-color;
+		border-radius: 1rem;
+		padding: 1rem;
+		margin-bottom: 1rem;
+		display: flex;
+		flex-direction: column;
+		box-shadow: shadow(4px, 4px, 2px, 0);
+
+		&--name {
+			text-transform: uppercase;
+			font-weight: 900;
+			color: $font-color-light;
+		}
+
+		&--delete {
+			margin-left: 1rem;
+			background-color: transparent;
+			color: $danger-color;
+			border: none;
+			font-weight: 900;
+			font-size: 1.1rem;
+			align-self: flex-end;
+			padding-bottom: 0.5rem;
+			cursor: pointer;
+		}
+	}
+}
+
+@media (min-width: 1024px) {
+	.displayCountries__container {
+		margin: 0;
+
+		&__country {
+			max-width: 412px;
+			min-width: 412px;
+		}
+	}
+}

@@ -1,0 +1,37 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
+
+.filters__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid $background-dark-color-40;
+
+	&__continent {
+		display: flex;
+		flex-direction: column;
+
+		& label {
+			@include label;
+		}
+
+		& select {
+			@include select;
+		}
+	}
+
+	&__activities {
+		display: flex;
+		flex-direction: column;
+
+		& label {
+			@include label;
+		}
+		& select {
+			@include select;
+		}
+	}
+}

@@ -1,0 +1,35 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
+
+.sort__container {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 30px;
+	width: 100%;
+
+	&__orderby {
+		display: flex;
+		flex-direction: column;
+
+		& label {
+			@include label;
+		}
+		& select {
+			@include select;
+			border: none;
+		}
+	}
+
+	&__sortby {
+		& input {
+			display: none;
+		}
+	}
+}
+
+@media (min-width: 600px) {
+	.sort__container {
+		width: 80%;
+	}
+}

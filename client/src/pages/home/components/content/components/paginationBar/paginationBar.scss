@@ -1,0 +1,58 @@
+@import "../../../../../../styles/variables.scss";
+@import "../../../../../../styles/mixins.scss";
+
+.pagination__container {
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	height: 2rem;
+
+	&__button {
+		&--prev {
+			@include pagionation-bttn;
+			&:hover {
+				background-color: $primary-color;
+				color: $font-color-dark;
+				cursor: pointer;
+			}
+		}
+		&--next {
+			@include pagionation-bttn;
+			&:hover {
+				background-color: $primary-color;
+				color: $font-color-dark;
+				cursor: pointer;
+			}
+		}
+		&--disabled {
+			@include pagionation-bttn;
+			color: $font-color-light-50;
+
+			&:hover {
+				background-color: $danger-color;
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	&__numbers {
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		gap: 2px;
+
+		&__eachOne {
+			@include pagionation-bttn;
+
+			&:hover {
+				background-color: $primary-color;
+				cursor: pointer;
+			}
+		}
+		&--active {
+			@include pagionation-bttn;
+			background-color: $accent-color;
+			color: $font-color-dark;
+		}
+	}
+}

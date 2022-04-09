@@ -1,0 +1,12 @@
+@import "../../../../styles/variables.scss";
+
+.displayError__container {
+	padding: 0.5rem;
+	text-transform: uppercase;
+	color: $danger-color;
+	// color: $font-color-dark;
+	// background-color: $danger-color;
+	font-weight: $fw-bold;
+	max-width: 400px;
+	margin-bottom: 2rem;
+}

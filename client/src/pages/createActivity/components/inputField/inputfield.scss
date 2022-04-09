@@ -1,0 +1,21 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
+
+.inputField__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__label {
+		@include label;
+		color: $accent-color;
+		font-weight: $fw-bold;
+		padding-bottom: 10px;
+	}
+	&__input {
+		@include input;
+		border-radius: 25px;
+		height: 1.5rem;
+		min-width: fit-content;
+	}
+}

@@ -1,0 +1,25 @@
+@import "../../styles/variables.scss";
+
+.home__container {
+	margin: 0;
+	padding: 0 1.5rem 2rem 1.5rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.home__error__containerEmpty {
+		background-color: $danger-color;
+		padding: 2rem;
+		border-radius: 25px;
+		max-width: 650px;
+
+		& p {
+			text-transform: uppercase;
+			font-weight: $fw-bold;
+			color: $background-light-color;
+			font-size: $fs-h3;
+			letter-spacing: 2px;
+		}
+	}
+}

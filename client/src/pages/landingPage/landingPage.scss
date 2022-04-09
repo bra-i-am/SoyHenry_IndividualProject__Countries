@@ -1,0 +1,52 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/functions.scss";
+@import "../../styles/variables.scss";
+
+.landing {
+	display: flex;
+	align-items: stretch;
+	background: url("../../assets/worldmap3.jpg") center no-repeat;
+	background-size: cover;
+	min-height: calc(100vh - 102px);
+	max-height: calc(100vh - 102px);
+
+	.landing_container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		background-color: $background-light-color-50;
+		backdrop-filter: blur(2px);
+		border-radius: 1.5rem;
+		min-height: 100%;
+		min-width: 100%;
+		padding: 4rem;
+
+		&__title {
+			h3 {
+				@include funny-h3;
+			}
+			h1 {
+				@include funny-h1;
+			}
+		}
+
+		&__button {
+			@include button-cta;
+			border: none;
+			padding: 1.5rem 3rem;
+			box-shadow: shadow(0, 9px, 0, 0, #001311);
+			transition: all 0.25s;
+
+			&:hover {
+				background-color: $accent-color;
+			}
+
+			&--disabled {
+				@include button-cta;
+				background-color: transparent;
+				border: none;
+			}
+		}
+	}
+}

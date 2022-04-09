@@ -1,0 +1,47 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/functions.scss";
+@import "../../../../styles/mixins.scss";
+
+.searhCountries__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+
+	&__label {
+		@include label;
+		padding-bottom: .5rem;
+		font-weight: $fw-bold;
+		color: $secondary-color;
+	}
+	&__button--add {
+		@include button-cta;
+		background-color: transparent;
+		border: 3px solid $secondary-color;
+		margin-bottom: 1rem;
+
+		&:hover {
+			background-color: $secondary-color;
+
+			svg {
+				stroke: $font-color-dark;
+			}
+		}
+	}
+
+	&__button--exit {
+		@include button-cta;
+		background-color: transparent;
+		color: $danger-color;
+		padding: 1rem 1rem 1rem 1.2rem;
+		font-weight: 900;
+		border: 3px solid $danger-color;
+		margin-bottom: 1rem;
+
+		&:hover {
+			background-color: $danger-color;
+			color: $font-color-dark;
+		}
+	}
+}

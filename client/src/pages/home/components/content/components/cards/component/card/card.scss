@@ -1,0 +1,40 @@
+@import "../../../../../../../../styles/variables.scss";
+@import "../../../../../../../../styles/functions.scss";
+
+.card__container {
+	border: 1px solid #00000050;
+	border-radius: 25px;
+	box-shadow: shadow(0, 2px, 4px, 2px);
+	margin-bottom: 1rem;
+	overflow: hidden;
+	max-width: 450px;
+
+	&__flag {
+		max-width: 100%;
+
+		@media (min-width: 1024px) {
+			// max-width: 450px;
+			// min-width: 450px;
+			max-height: 350px;
+			min-height: 262px;
+		}
+	}
+
+	&__info {
+		padding: 1rem;
+
+		&__link {
+			text-decoration: none;
+
+			&__name {
+				color: $font-color-light;
+				text-transform: capitalize;
+			}
+		}
+
+		&__continent {
+			color: #00000070;
+			text-transform: capitalize;
+		}
+	}
+}
