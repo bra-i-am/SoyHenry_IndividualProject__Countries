@@ -38,7 +38,6 @@ function SearchCountries({ selectedCountries, handler }) {
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="icon icon-tabler icon-tabler-plus"
 						width="36"
 						height="36"
 						viewBox="0 0 24 24"

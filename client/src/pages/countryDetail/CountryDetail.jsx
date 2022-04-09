@@ -12,6 +12,9 @@ import {
 import ShowInfo from "./components/showInfo/ShowInfo";
 import ShowActivities from "./components/showAndDeleteActivities/ShowAndDeleteActivities";
 import PutActivities from "./components/putActivities/PutActivities";
+import Loader from "../../components/complexLoader/Loader";
+
+import "./countrydetail.scss";
 
 function CountryDetail() {
 	const [activityAdded, setActivityAdded] = useState(false);
@@ -45,24 +48,26 @@ function CountryDetail() {
 	}, [activityDeleted]);
 
 	return (
-		<div>
+		<div className="countryDetail__container">
 			{Object.keys(country).length ? (
-				<div>
+				<div className="countryDetail__container__content">
 					<ShowInfo country={country} />
-					<PutActivities
-						countryName={country.name}
-						setActivityAdded={setActivityAdded}
-						activityAdded={activityAdded}
-					/>
-					<ShowActivities
-						country={country}
-						activities={country.activities}
-						activityDeleted={activityDeleted}
-						setActivityDeleted={setActivityDeleted}
-					/>
+					<div className="countryDetail__container__content--info">
+						<ShowActivities
+							country={country}
+							activities={country.activities}
+							activityDeleted={activityDeleted}
+							setActivityDeleted={setActivityDeleted}
+						/>
+						<PutActivities
+							countryName={country.name}
+							setActivityAdded={setActivityAdded}
+							activityAdded={activityAdded}
+						/>
+					</div>
 				</div>
 			) : (
-				"LOADING ON COUNTRY DETAIL"
+				<Loader />
 			)}
 		</div>
 	);

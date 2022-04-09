@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { putActivity, getCountries } from "../../../../redux/actions";
 
+import "./putactivities.scss";
+
 function PutActivities({ countryName, setActivityAdded, activityAdded }) {
 	const dispatch = useDispatch();
 
@@ -35,11 +37,17 @@ function PutActivities({ countryName, setActivityAdded, activityAdded }) {
 	};
 
 	return (
-		<>
+		<div className="putActivities__container">
 			{showSearch ? (
-				<button onClick={handleShowAddClick}>X</button>
+				<button
+					className="putActivities__container--exit"
+					onClick={handleShowAddClick}
+				>
+					X
+				</button>
 			) : (
 				<button
+					className="putActivities__container--add"
 					id="addCountry"
 					onClick={handleShowAddClick}
 					disabled={!activities.length && true}
@@ -49,9 +57,10 @@ function PutActivities({ countryName, setActivityAdded, activityAdded }) {
 			)}
 
 			{showSearch && activities.length > 0 ? (
-				<div>
+				<div className="putActivities__container__searchActivity">
 					<label htmlFor={"activities"}>Activities</label>
 					<input
+						placeholder="Which activity...?"
 						name={"activities"}
 						id={"activities"}
 						type={"search"}
@@ -73,7 +82,7 @@ function PutActivities({ countryName, setActivityAdded, activityAdded }) {
 			) : (
 				""
 			)}
-		</>
+		</div>
 	);
 }
 

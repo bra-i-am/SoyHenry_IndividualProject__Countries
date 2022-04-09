@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.countryDetail__container {
+	min-height: calc(100vh - 102px);
+	min-width: 100%;
+
+	&__content {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 1rem;
+		margin-bottom: 2rem;
+
+		@media (min-width: 1300px) {
+			justify-content: space-evenly;
+			flex-direction: row;
+		}
+
+		&--info {
+			@media (min-width: 1300px) {
+				align-self: center;
+			}
+		}
+	}
+}

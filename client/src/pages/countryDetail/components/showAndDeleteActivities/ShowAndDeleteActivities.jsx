@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { putActivity, getCountries } from "../../../../redux/actions";
 
+import "./showndelete.scss";
+
 function ShowActivities({
 	country,
 	activities,
@@ -26,20 +28,52 @@ function ShowActivities({
 
 	return (
 		<>
-			{activities.length ? <p>Touristic activities: </p> : ""}
-			{activities.length
-				? activities.map((el, idx) => {
+			{activities.length ? (
+				<div className="showAndDelete__container">
+					<h3 className="showAndDelete__container__tag">
+						Touristic activities
+					</h3>
+
+					{activities.map((el, idx) => {
 						return (
-							<div key={`${el.name}${idx}`}>
-								<button onClick={(e) => handleDeleteClick(e, el)}>X</button>
-								<h2>{el.name}</h2>
-								<p>Difficulty: {el.expertise}</p>
-								<p>Duration: {el.duration}</p>
-								<p>Season: {el.season}</p>
+							<div
+								className="showAndDelete__container__activity"
+								key={`${el.name}${idx}`}
+							>
+								<h2 className="showAndDelete__container__activity__name">
+									{el.name}
+									<button
+										className="showAndDelete__container__activity--delete"
+										onClick={(e) => handleDeleteClick(e, el)}
+									>
+										DELETE
+									</button>
+								</h2>
+								<div className="showAndDelete__container__activity__info">
+									<span className="showAndDelete__container__activity__info__subtitle">
+										Difficulty:
+									</span>
+									<h3>{el.expertise} of 5</h3>
+								</div>
+								<div className="showAndDelete__container__activity__info">
+									<span className="showAndDelete__container__activity__info__subtitle">
+										Duration:
+									</span>
+									<h3>{el.duration} hours aprox.</h3>
+								</div>
+								<div className="showAndDelete__container__activity__info">
+									<span className="showAndDelete__container__activity__info__subtitle">
+										Season:
+									</span>
+									<h3>{el.season}</h3>
+								</div>
 							</div>
 						);
-				  })
-				: ""}
+					})}
+				</div>
+			) : (
+				""
+			)}
 		</>
 	);
 }

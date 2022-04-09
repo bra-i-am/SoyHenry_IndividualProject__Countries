@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { handleChange, handleSubmit, handleReset } from "../../utils/handlers";
 
-import Loader from "../../../../components/loader/Loader";
 import "./searchbar.scss";
 
 export class SeachBar extends Component {
@@ -79,9 +78,7 @@ export class SeachBar extends Component {
 
 				<div className="searchbar__container__reset">
 					{!this.props.countries.length ? (
-						<button className="searchbar__container__reset__loading">
-							
-						</button>
+						""
 					) : (
 						<button
 							className="searchbar__container__reset__button"

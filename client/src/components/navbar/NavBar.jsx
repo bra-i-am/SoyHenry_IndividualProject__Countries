@@ -15,7 +15,9 @@ export default function NavBar() {
 
 	return (
 		<nav className="nav">
-			<img src={logo} alt="Not found" className="nav__img" />
+			<NavLink exact to={"/"} activeClassName="nav__links--selected">
+				<img src={logo} alt="Not found" className="nav__img" />
+			</NavLink>
 			<span className="nav__burguer" onClick={handleBurguerClick}>
 				<span className="nav__burguer_bar"></span>
 				<span className="nav__burguer_bar"></span>

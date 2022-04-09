@@ -1,0 +1,80 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/functions.scss";
+@import "../../../../styles/mixins.scss";
+
+.showAndDelete__container {
+	// border: 1px solid red;
+	max-width: 540px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 1rem;
+	border-radius: 1.5rem;
+	padding: 1rem;
+	box-shadow: shadow(0, 0, 5px, 2px);
+
+	&__tag {
+		@include funny-h1;
+		font-size: $fs-h1;
+	}
+
+	&__activity {
+		max-width: 460px;
+		min-width: 325px;
+		margin-top: 1rem;
+		border-radius: 1.5rem;
+
+		&--delete {
+			margin-left: 1rem;
+			margin-top: 1rem;
+			background-color: transparent;
+			color: $danger-color-40;
+			border: none;
+			font-weight: 900;
+			font-size: 1.1rem;
+			cursor: pointer;
+
+			&:hover {
+				color: $danger-color;
+			}
+		}
+
+		&__name {
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: center;
+
+			text-transform: uppercase;
+			font-weight: 900;
+			letter-spacing: 2px;
+			color: $primary-color;
+			margin: 0 0 1.5rem 0;
+			font-size: $fs-h1;
+		}
+
+		&__info {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 2rem;
+
+			& h3 {
+				@include funny-h3;
+				margin-bottom: 1rem;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				text-decoration: none;
+				font-size: $fs-button;
+				font-weight: 900;
+				color: $accent-color;
+			}
+
+			&__subtitle {
+				@include label;
+				padding-bottom: 0.5rem;
+				font-weight: $fw-bold;
+				color: $font-color-light;
+			}
+		}
+	}
+}
