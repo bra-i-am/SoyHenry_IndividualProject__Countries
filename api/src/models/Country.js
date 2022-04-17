@@ -34,13 +34,13 @@ module.exports = (sequelize) => {
 					isAlpha: true,
 				},
 			},
-			capital: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
-			subregion: {
-				type: DataTypes.STRING,
-			},
+			// capital: {
+			// 	type: DataTypes.STRING,
+			// 	allowNull: true,
+			// },
+			// subregion: {
+			// 	type: DataTypes.STRING,
+			// },
 			area: {
 				type: DataTypes.INTEGER,
 			},

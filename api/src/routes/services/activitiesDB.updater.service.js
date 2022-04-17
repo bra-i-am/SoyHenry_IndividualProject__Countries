@@ -1,6 +1,6 @@
 const { Country, Activity } = require("../../db");
 
-async function removeActivity(activityTo, action, fromCountry) {
+async function updateActivity(activityTo, action, fromCountry) {
 	const activity = await Activity.findOne({
 		where: { name: activityTo },
 	}).catch((e) => console.log("Find Activity remover:", e.message));
@@ -15,11 +15,8 @@ async function removeActivity(activityTo, action, fromCountry) {
 		},
 	}).catch((e) => console.log("Find City remover:", e.message));
 
-	// const country = await countries.filter(
-	// 	(country) => country.name === fromCountry,
-	// )[0];
 	if (action === "remove") activity.removeCountry(country);
 	if (action === "add") activity.addCountry(country);
 }
 
-module.exports = removeActivity;
+module.exports = updateActivity;

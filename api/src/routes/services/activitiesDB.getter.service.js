@@ -1,4 +1,4 @@
-const { Country, Activity } = require("../../db");
+const { Activity } = require("../../db");
 
 async function getDDBBactivities() {
 	return await Activity.findAll();
