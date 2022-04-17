@@ -19,7 +19,9 @@ function InputField({
 				{text}
 			</label>
 			<input
-				className="inputField__container__input"
+				className={`inputField__container__input ${
+					errors && errors[id] ? "error" : "correct"
+				}`}
 				name={id}
 				id={id}
 				type={type}

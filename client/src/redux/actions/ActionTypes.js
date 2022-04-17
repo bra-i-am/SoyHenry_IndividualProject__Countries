@@ -4,8 +4,7 @@ export const GET_COUNTRY = "GET_COUNTRY";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const GET_ALL_ACTIVITIES = "GET_ALL_ACTIVITIES";
 
-export const FILTER_REGION = "FILTER_REGION";
-export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
+export const FILTER = "FILTER";
 
 export const ORDER = "ORDER";
 export const SORT = "SORT";

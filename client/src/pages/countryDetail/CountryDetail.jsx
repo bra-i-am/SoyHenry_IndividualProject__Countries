@@ -38,13 +38,15 @@ function CountryDetail() {
 	useEffect(() => {
 		setTimeout(() => {
 			dispatch(getCountry(id));
-		}, 500); // eslint-disable-next-line
+		}, 1000);
+		// eslint-disable-next-line
 	}, [activityAdded]);
 
 	useEffect(() => {
 		setTimeout(() => {
 			dispatch(getCountry(id));
-		}, 500); // eslint-disable-next-line
+		}, 1000);
+		// eslint-disable-next-line
 	}, [activityDeleted]);
 
 	return (

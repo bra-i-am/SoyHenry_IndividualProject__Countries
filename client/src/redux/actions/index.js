@@ -7,6 +7,7 @@ import {
 	GET_ALL_ACTIVITIES,
 	FILTER_ACTIVITY,
 	FILTER_REGION,
+	FILTER,
 	SORT,
 	ORDER,
 	RESET_COUNTRIES,
@@ -29,13 +30,35 @@ export function getCountries(name) {
 
 export function getCountry(countryId) {
 	return async function (dispatch) {
-		const { data } = await axios.get(
-			`http://localhost:3001/countries/${countryId}`,
-		);
+		const activities = await axios
+			.get(`http://localhost:3001/countries/${countryId}`)
+			.then(({ data }) => {
+				return data.activities;
+			});
+
+		const country = await axios
+			.get(`https://restcountries.com/v3.1/alpha/${countryId}`)
+			.then(({ data }) => {
+				return {
+					id: data[0].cca3,
+					name: data[0].name.official,
+					flag: data[0].flags.svg,
+					region: data[0].region,
+					subregion: data[0].subregion,
+					capital: data[0].capital,
+					area: data[0].area,
+					population: data[0].population,
+				};
+			});
+
+		const countryFound = {
+			...country,
+			activities,
+		};
 
 		return dispatch({
 			type: GET_COUNTRY,
-			payload: data,
+			payload: countryFound,
 		});
 	};
 }
@@ -98,16 +121,11 @@ export function putActivity(info) {
 }
 
 /** Filters */
-export function filterRegion(region) {
+export function filterBy(payload) {
+	console.log("payload", payload);
 	return {
-		type: FILTER_REGION,
-		payload: region,
-	};
-}
-export function filterActivity(activity) {
-	return {
-		type: FILTER_ACTIVITY,
-		payload: activity,
+		type: FILTER,
+		payload,
 	};
 }
 

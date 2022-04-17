@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { getCountries } from "../../redux/actions";
+
 import Loader from "../../components/loader/Loader";
 
-import { getCountries, sort } from "../../redux/actions";
 import "./landingPage.scss";
 
 export class LandingPage extends Component {
@@ -27,11 +28,11 @@ export class LandingPage extends Component {
 									width="44"
 									height="44"
 									viewBox="0 0 24 24"
-									stroke-width="1.5"
+									strokeWidth="1.5"
 									stroke="#f7fffe"
 									fill="none"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+									strokeLinecap="round"
+									strokeLinejoin="round"
 								>
 									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 									<path d="M3 5v14l8 -7z" />
@@ -58,7 +59,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		getCountries: () => dispatch(getCountries()),
-		sort: (order) => dispatch(sort(order)),
 	};
 }
 

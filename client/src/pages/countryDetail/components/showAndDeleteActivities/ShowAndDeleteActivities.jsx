@@ -49,6 +49,7 @@ function ShowActivities({
 										DELETE
 									</button>
 								</h2>
+
 								<div className="showAndDelete__container__activity__info">
 									<span className="showAndDelete__container__activity__info__subtitle">
 										Difficulty:

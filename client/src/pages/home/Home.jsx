@@ -7,8 +7,7 @@ import {
 	resetCountries,
 	order,
 	sort,
-	filterRegion,
-	filterActivity,
+	filterBy,
 } from "../../redux/actions";
 
 import SeachBar from "./components/searchbar/SeachBar";
@@ -22,10 +21,10 @@ export class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activityFilter: "All",
-			regionFilter: "All",
-			orderBy: "name",
-			sortBy: "asc",
+			actualActivity: "All",
+			actualRegion: "All",
+			actualOrder: "name",
+			actualSort: "asc",
 		};
 
 		this.updateState = this.updateState.bind(this);
@@ -46,10 +45,10 @@ export class Home extends Component {
 		this.setState((prevState) => {
 			return {
 				...prevState,
-				activityFilter: "All",
-				regionFilter: "All",
-				orderBy: "name",
-				sortBy: "asc",
+				actualActivity: "All",
+				actualRegion: "All",
+				actualOrder: "name",
+				actualSort: "asc",
 			};
 		});
 	}
@@ -58,8 +57,8 @@ export class Home extends Component {
 		this.setState((prevState) => {
 			return {
 				...prevState,
-				orderBy: "name",
-				sortBy: "asc",
+				actualOrder: "name",
+				actualSort: "asc",
 			};
 		});
 	}
@@ -93,19 +92,17 @@ export class Home extends Component {
 				<SeachBar
 					getCountries={this.props.getCountries}
 					countries={this.props.countries}
-					resetCountries={this.props.reset}
+					resetCountries={this.props.resetCountries}
 					resetHomeState={this.resetState}
-					updateHomeState={this.updateState}
 				/>
 
 				<Filters
 					countries={this.props.countries}
 					countriesAux={this.props.countriesAux}
 					activities={this.props.activities}
-					filterRegion={this.props.filterRegion}
-					filterActivity={this.props.filterActivity}
-					actualRegion={this.state.regionFilter}
-					actualActivity={this.state.activityFilter}
+					filterBy={this.props.filterBy}
+					actualRegion={this.state.actualRegion}
+					actualActivity={this.state.actualActivity}
 					resetOrders={this.resetOrders}
 					updateHomeState={this.updateState}
 				/>
@@ -115,8 +112,8 @@ export class Home extends Component {
 						<Sort
 							setOrder={this.props.order}
 							setSort={this.props.sort}
-							actualOrder={this.state.orderBy}
-							actualSort={this.state.sortBy}
+							actualOrder={this.state.actualOrder}
+							actualSort={this.state.actualSort}
 							updateHomeState={this.updateState}
 						/>
 					)}
@@ -136,13 +133,12 @@ export class Home extends Component {
 }
 
 function mapStateToProps(state) {
-	const { countries, countriesAux, regionsFiltered } = state.countriesReducer;
+	const { countries, countriesAux } = state.countriesReducer;
 	const { activities } = state.activitiesReducer;
 
 	return {
 		countries,
 		countriesAux,
-		regionsFiltered,
 		activities,
 	};
 }
@@ -151,11 +147,12 @@ function mapDispatchToProps(dispatch) {
 	return {
 		getCountries: (name) => dispatch(getCountries(name)),
 		getActivities: () => dispatch(getActivities()),
-		filterRegion: (region) => dispatch(filterRegion(region)),
-		filterActivity: (activity) => dispatch(filterActivity(activity)),
+		// filterRegion: (region) => dispatch(filterRegion(region)),
+		// filterActivity: (activity) => dispatch(filterActivity(activity)),
+		filterBy: (payload) => dispatch(filterBy(payload)),
 		order: (by) => dispatch(order(by)),
 		sort: (by) => dispatch(sort(by)),
-		reset: () => dispatch(resetCountries()),
+		resetCountries: () => dispatch(resetCountries()),
 	};
 }
 

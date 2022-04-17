@@ -26,13 +26,13 @@ function card({ id, name, flag, region }) {
 export default card;
 
 /**
-id(pin): "URY"
-name(pin): "Oriental Republic of Uruguay"
-flag(pin): "https://flagcdn.com/uy.svg"
-region(pin): "Americas"
-capital(pin): "Montevideo"
-subregion(pin): "South America"
-area(pin): 181034
-population(pin): 3473727
+id: "URY"
+name: "Oriental Republic of Uruguay"
+flag: "https://flagcdn.com/uy.svg"
+region: "Americas"
+capital: "Montevideo"
+subregion: "South America"
+area: 181034
+population: 3473727
 activities
  */

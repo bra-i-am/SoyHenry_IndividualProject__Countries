@@ -20,9 +20,7 @@ function SearchCountries({ selectedCountries, handler }) {
 
 	return (
 		<div className="searhCountries__container">
-			<label className="searhCountries__container__label">
-				Add a country:{" "}
-			</label>
+			<label className="searhCountries__container__label">Add a country:</label>
 			{showSearch ? (
 				<button
 					className="searhCountries__container__button--exit"

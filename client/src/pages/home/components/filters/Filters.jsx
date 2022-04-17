@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { handleRegionChange, handleActivityChange } from "../../utils/handlers";
+import { handleFilters } from "../../utils/handlers";
 
 import "./filter.scss";
 
@@ -23,16 +23,18 @@ export default class Filters extends Component {
 						<label htmlFor="regions">Continent</label>
 						<select
 							id="regions"
+							name="actualRegion"
+							value={this.props.actualRegion}
 							onChange={(e) =>
-								handleRegionChange(
+								handleFilters(
 									e,
-									this.props.filterRegion,
-									this.props.filterActivity,
-									this.props.updateHomeState,
+									this.props.filterBy,
 									this.props.resetOrders,
+									this.props.updateHomeState,
+									this.props.actualRegion,
+									this.props.actualActivity,
 								)
 							}
-							value={this.props.actualRegion}
 						>
 							<option value="All">All</option>
 							{regions.map((region, idx) => {
@@ -54,15 +56,18 @@ export default class Filters extends Component {
 						<label htmlFor="activities">Activities</label>
 						<select
 							id="activities"
+							name="actualActivity"
+							value={this.props.actualActivity}
 							onChange={(e) =>
-								handleActivityChange(
+								handleFilters(
 									e,
-									this.props.filterActivity,
+									this.props.filterBy,
 									this.props.resetOrders,
 									this.props.updateHomeState,
+									this.props.actualRegion,
+									this.props.actualActivity,
 								)
 							}
-							value={this.props.actualActivity}
 						>
 							<option value="All">All</option>
 							{this.props.activities?.map((activity, idx) => {

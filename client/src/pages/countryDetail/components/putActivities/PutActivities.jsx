@@ -38,22 +38,28 @@ function PutActivities({ countryName, setActivityAdded, activityAdded }) {
 
 	return (
 		<div className="putActivities__container">
-			{showSearch ? (
-				<button
-					className="putActivities__container--exit"
-					onClick={handleShowAddClick}
-				>
-					X
-				</button>
+			{activities.length > 0 ? (
+				<>
+					{showSearch ? (
+						<button
+							className="putActivities__container--exit"
+							onClick={handleShowAddClick}
+						>
+							X
+						</button>
+					) : (
+						<button
+							className="putActivities__container--add"
+							id="addCountry"
+							onClick={handleShowAddClick}
+							disabled={!activities.length && true}
+						>
+							Add activity
+						</button>
+					)}
+				</>
 			) : (
-				<button
-					className="putActivities__container--add"
-					id="addCountry"
-					onClick={handleShowAddClick}
-					disabled={!activities.length && true}
-				>
-					Add activity
-				</button>
+				""
 			)}
 
 			{showSearch && activities.length > 0 ? (

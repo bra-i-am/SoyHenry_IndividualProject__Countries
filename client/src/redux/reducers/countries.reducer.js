@@ -1,6 +1,7 @@
 import {
 	GET_COUNTRIES,
 	GET_COUNTRY,
+	FILTER,
 	FILTER_ACTIVITY,
 	FILTER_REGION,
 	SORT,
@@ -11,9 +12,8 @@ import {
 
 export const initialState = {
 	country: {},
-	countries: [],
-	countriesAux: [],
-	regionsFiltered: [],
+	countries: [], //Countries que se estan renderizando
+	countriesAux: [], //Permanece con todas las countries
 };
 
 export default function countriesReducer(
@@ -27,13 +27,13 @@ export default function countriesReducer(
 			return name
 				? {
 						...state,
-						countries: data,
+						countriesSearch: data,
+						countriesSearchAux: data,
 				  }
 				: {
 						...state,
 						countries: payload,
 						countriesAux: payload,
-						regionsFiltered: payload,
 				  };
 		case GET_COUNTRY:
 			return {
@@ -42,33 +42,45 @@ export default function countriesReducer(
 			};
 
 		/** Filters */
-		case FILTER_REGION:
-			const filteredRegion =
-				payload === "All"
-					? state.countriesAux
-					: state.countriesAux.filter(
-							(country) =>
-								country.region.toLowerCase() === payload.toLowerCase(),
-					  );
-			return {
-				...state,
-				countries: filteredRegion,
-				regionsFiltered: filteredRegion,
-			};
-		case FILTER_ACTIVITY:
-			const filteredActivities =
-				payload === "All"
-					? state.regionsFiltered
-					: state.countries.filter((country) =>
-							country.activities.find(
-								(activity) =>
-									activity.name.toLowerCase() === payload.toLowerCase(),
-							),
-					  );
-			return {
-				...state,
-				countries: filteredActivities.length ? filteredActivities : "Not found",
-			};
+		case FILTER:
+			const { region, activity } = payload;
+
+			if (region === "All" && activity === "All") {
+				return {
+					...state,
+					countries: state.countriesAux,
+				};
+			} else if (region !== "All" && activity === "All") {
+				const regionFiltered = state.countriesAux.filter(
+					(country) => country.region.toLowerCase() === region.toLowerCase(),
+				);
+				return {
+					...state,
+					countries: regionFiltered.length ? regionFiltered : "Not found",
+				};
+			} else if (region === "All" && activity !== "All") {
+				const activityFiltered = state.countriesAux.filter((country) =>
+					country.activities.find(
+						(el) => el.name.toLowerCase() === activity.toLowerCase(),
+					),
+				);
+				return {
+					...state,
+					countries: activityFiltered.length ? activityFiltered : "Not found",
+				};
+			} else {
+				const countriesFiltered = state.countriesAux.filter(
+					(country) =>
+						country.region.toLowerCase() === region.toLowerCase() &&
+						country.activities.find(
+							(el) => el.name.toLowerCase() === activity.toLowerCase(),
+						),
+				);
+				return {
+					...state,
+					countries: countriesFiltered.length ? countriesFiltered : "Not found",
+				};
+			}
 
 		/** Orders */
 		case ORDER:
@@ -110,7 +122,7 @@ export default function countriesReducer(
 				...state,
 				countries: [],
 				countriesAux: [],
-				regionsFiltered: [],
+				countriesFiltered: [],
 			};
 
 		case RESET_COUNTRY:

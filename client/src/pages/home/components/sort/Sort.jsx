@@ -24,6 +24,7 @@ export default class Sort extends Component {
 					>
 						<option value="name">Name</option>
 						<option value="population">Population</option>
+						<option value="area">Area</option>
 					</select>
 				</div>
 

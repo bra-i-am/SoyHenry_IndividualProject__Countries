@@ -8,12 +8,12 @@ export const handleSubmit = (
 	e,
 	search,
 	getCountries,
-	resetState,
+	resetSearchBarState,
 	resetHomeState,
 ) => {
 	e.preventDefault();
 	search && getCountries(search);
-	resetState();
+	resetSearchBarState();
 	resetHomeState();
 };
 
@@ -30,30 +30,40 @@ export const handleReset = (
 };
 
 /** Filters */
-export const handleRegionChange = (
+export const handleFilters = (
 	e,
-	filterRegion,
-	filterActivity,
-	updateState,
+	filterBy,
 	resetOrders,
+	updateHomeState,
+	actualRegion,
+	actualActivity,
 ) => {
 	e.preventDefault();
-	filterRegion(e.target.value);
-	filterActivity("All");
-	updateState({ regionFilter: e.target.value, activityFilter: "All" });
-	resetOrders();
-};
 
-export const handleActivityChange = (
-	e,
-	filterActivity,
-	resetOrders,
-	updateState,
-) => {
-	e.preventDefault();
-	filterActivity(e.target.value);
+	let auxiliar = {};
+
+	e.target.name === "actualRegion" &&
+		(auxiliar = {
+			...auxiliar,
+			region: e.target.value,
+			activity: actualActivity,
+		});
+
+	e.target.name === "actualActivity" &&
+		(auxiliar = {
+			...auxiliar,
+			region: actualRegion,
+			activity: e.target.value,
+		});
+
+	filterBy(auxiliar);
+
+	updateHomeState({
+		actualRegion: auxiliar.region,
+		actualActivity: auxiliar.activity,
+	});
+
 	resetOrders();
-	updateState({ activityFilter: e.target.value });
 };
 
 /** Orders */
@@ -61,8 +71,8 @@ export const handleChangeOrder = (e, setOrder, updateHomeState) => {
 	e.preventDefault();
 	setOrder(e.target.value);
 	updateHomeState({
-		orderBy: e.target.value,
-		sortBy: "asc",
+		actualOrder: e.target.value,
+		actualSort: "asc",
 	});
 };
 
@@ -73,5 +83,5 @@ export const handleClickSort = (e, setSort, updateHomeState, order) => {
 		value: sort,
 		order: order.toLowerCase(),
 	});
-	updateHomeState({ sortBy: sort });
+	updateHomeState({ actualSort: sort });
 };

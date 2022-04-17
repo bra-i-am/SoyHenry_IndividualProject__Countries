@@ -45,7 +45,6 @@ export const handleClickDeleteCountry = (e, setInputs, inputs) => {
 
 export const handleSubmit = (e, inputs, dispatch, actions, history) => {
 	const { postActivity, getCountries } = actions;
-	console.log(actions);
 
 	e.preventDefault();
 	const info = {
@@ -53,8 +52,10 @@ export const handleSubmit = (e, inputs, dispatch, actions, history) => {
 		expertise: Number(inputs.expertise),
 		duration: Number(inputs.duration),
 	};
-	dispatch(postActivity(info));
-	dispatch(getCountries());
+	setTimeout(() => {
+		dispatch(postActivity(info));
+		dispatch(getCountries());
+	}, 500);
 
 	alert("Activity created successfully.");
 	history.push("/home");
